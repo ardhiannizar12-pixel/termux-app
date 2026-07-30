@@ -12,6 +12,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      SIGNING_ALIAS: ${{ vars.SIGNING_ALIAS }}
+      SIGNING_STORE_PASS: ${{ vars.SIGNING_STORE_PASS }}
+      SIGNING_KEY_PASS: ${{ vars.SIGNING_KEY_PASS }}
+      SIGNING_KEY_PATH: ${{ vars.SIGNING_KEY_PATH }}
     strategy:
       fail-fast: false
       matrix:
@@ -131,3 +136,4 @@ jobs:
           path: |
             ${{ env.APK_DIR_PATH }}/${{ env.APK_BASENAME_PREFIX }}_sha256sums
             ${{ env.APK_DIR_PATH }}/output-metadata.json
+
