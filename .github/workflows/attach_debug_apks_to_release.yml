@@ -8,6 +8,11 @@ on:
 jobs:
   attach-apks:
     runs-on: ubuntu-latest
+    env:
+      SIGNING_ALIAS: ${{ vars.SIGNING_ALIAS }}
+      SIGNING_STORE_PASS: ${{ vars.SIGNING_STORE_PASS }}
+      SIGNING_KEY_PASS: ${{ vars.SIGNING_KEY_PASS }}
+      SIGNING_KEY_PATH: ${{ vars.SIGNING_KEY_PATH }}
     strategy:
       fail-fast: false
       matrix:
@@ -82,3 +87,4 @@ jobs:
           "$RELEASE_VERSION_NAME"; then
             exit_on_error "Attach APKs to release failed for '$APK_VERSION_TAG' release."
           fi
+
